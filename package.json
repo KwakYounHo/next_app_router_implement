@@ -4,7 +4,8 @@
   "description": "Let's implete about react-router of next.js\"",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "webpack --mode development"
   },
   "keywords": [
     "react-router"
