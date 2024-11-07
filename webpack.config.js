@@ -37,4 +37,10 @@ module.exports = {
       template: "./src/public/index.html",
     }),
   ],
+
+  devServer: {
+    port: 3333,
+    compress: true,
+    open: true,
+  },
 };
