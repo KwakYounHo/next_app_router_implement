@@ -7,15 +7,20 @@ module.exports = {
   mode: "development", // or production
 
   resolve: {
-    extensions: [".js", ".jsx"],
+    extensions: [".js", ".jsx", ".ts", ".tsx"],
   },
 
   entry: {
-    app: ["./src/app.js"],
+    app: ["./src/app.tsx"],
   },
 
   module: {
     rules: [
+      {
+        test: /\.tsx?$/,
+        use: "ts-loader",
+        exclude: /node_modules/,
+      },
       {
         test: /\.jsx?$/,
         loader: "babel-loader",
