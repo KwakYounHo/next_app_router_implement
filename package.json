@@ -1,0 +1,14 @@
+{
+  "name": "app-router-implement",
+  "version": "1.0.0",
+  "description": "Let's implete about react-router of next.js\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "react-router"
+  ],
+  "author": "kwak yunho",
+  "license": "ISC"
+}
