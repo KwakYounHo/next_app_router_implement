@@ -1,5 +1,5 @@
-const fs = require("fs");
-const path = require("path");
+import fs from "fs";
+import path from "path";
 
 function findDir(root) {
   return new Promise((resolve, reject) => {
@@ -14,7 +14,7 @@ function findDir(root) {
 
         files.forEach((file) => {
           if (file.isDirectory()) {
-            filePath = `${file.parentPath}/${file.name}`;
+            const filePath = `${file.parentPath}/${file.name}`;
             result.push(filePath);
 
             findDir(filePath)
@@ -34,4 +34,21 @@ function findDir(root) {
   });
 }
 
-findDir(path.join(__dirname, "src", "app")).then((arr) => console.log(arr));
+const root = path.join(import.meta.dirname, "src", "app");
+console.log(root);
+const arr = await findDir(root);
+console.log(arr);
+const pages = {};
+arr.forEach((e) => {
+  const solve = e.split("/");
+  const strKey = Array.from(String(solve[solve.length - 1]));
+  const key = [
+    strKey[0].toUpperCase(),
+    [...strKey.slice(1, strKey.length)].join(""),
+  ].join("");
+  pages[key] = e + "/page.jsx";
+});
+
+fs.writeFile("./coponents.json", JSON.stringify(pages), "utf8", (err) => {
+  if (err) throw err;
+});
